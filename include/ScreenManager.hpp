@@ -37,3 +37,27 @@ void ScreenManager<T>::drawText()
 {
     std::cout << this->text << std::endl;
 }
+
+template< typename T >
+void ScreenManager<T>::Initialize()
+{
+	currentScreen = new SplashScreen;
+}
+
+template< typename T >
+void ScreenManager<T>::LoadContent()
+{
+	currentScreen->LoadContent();
+}
+
+template< typename T>
+void ScreenManager::Update()
+{
+	currentScreen->Update();
+}
+
+template< typename T >
+void ScreenManager::Draw()
+{
+	currentScreen->Draw();
+}

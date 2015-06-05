@@ -6,6 +6,7 @@
 #define SCREENMANAGER_H
 
 #include <iostream>
+#include "GameScreen.h"
 
 template <typename T>
 class ScreenManager
@@ -22,6 +23,11 @@ class ScreenManager
 		void setText( T _text ); // set screen text
 		void drawText(); // print text on the screen
 
+		void Initialize();
+		void LoadContent();
+		void UnloadContent();
+		void Update();
+		void Draw(sf::RenderWindow & Window);
 	/*! 
      * Protected section
 	*/
@@ -34,6 +40,7 @@ class ScreenManager
 		/*! Operators */
 		const ScreenManager & operator=( const ScreenManager & ); // operator equal
 
+		GameScreen *currentScreen, *newScreen;
 		/*! Attributes */
 		T text; // 
 };
