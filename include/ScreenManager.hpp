@@ -4,6 +4,7 @@
 ***********************************************/
 #include "ScreenManager.h"
 
+GameScreen *currentScreen, *newScreen;
 /********************************************//**
 * \class constructor
 ***********************************************/
@@ -21,43 +22,37 @@ ScreenManager<T>::~ScreenManager()
 { }
 
 /********************************************//**
-* \function to set the text to the screen
+* \generate new screen instance
 ***********************************************/
-template< typename T >
-void ScreenManager<T>::setText( T text_ )
-{
-    this->text = text_;
-}
-
-/********************************************//**
-* \function to print the text on screen
-***********************************************/
-template< typename T >
-void ScreenManager<T>::drawText()
-{
-    std::cout << this->text << std::endl;
-}
-
 template< typename T >
 void ScreenManager<T>::Initialize()
 {
 	currentScreen = new SplashScreen;
 }
 
+/********************************************//**
+* \screen's content loader
+***********************************************/
 template< typename T >
 void ScreenManager<T>::LoadContent()
 {
 	currentScreen->LoadContent();
 }
 
+/********************************************//**
+* \screen's content unloader
+***********************************************/
 template< typename T>
-void ScreenManager::Update()
+void ScreenManager<T>::Update()
 {
 	currentScreen->Update();
 }
 
+/********************************************//**
+* \print the content on screen
+***********************************************/
 template< typename T >
-void ScreenManager::Draw()
+void ScreenManager<T>::Draw( sf::RenderWindow &Window )
 {
-	currentScreen->Draw();
+	currentScreen->Draw( Window );
 }

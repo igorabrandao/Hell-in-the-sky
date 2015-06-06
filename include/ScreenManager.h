@@ -7,6 +7,10 @@
 
 #include <iostream>
 #include "GameScreen.h"
+#include "SplashScreen.h"
+
+#define screenWidth 1200
+#define screenHeight 768
 
 template <typename T>
 class ScreenManager
@@ -17,32 +21,27 @@ class ScreenManager
 	public:
 		/*! Functions */
 		~ScreenManager(); // class destructor
-		ScreenManager(); // class constructor				
+		ScreenManager();  // class constructor				
 		ScreenManager( ScreenManager const& ); // class constructor override
-
-		void setText( T _text ); // set screen text
-		void drawText(); // print text on the screen
 
 		void Initialize();
 		void LoadContent();
 		void UnloadContent();
 		void Update();
-		void Draw(sf::RenderWindow & Window);
+		void Draw( sf::RenderWindow &Window );
 	/*! 
      * Protected section
 	*/
 	protected:
 
-	/*! 
+	/*!
      * Private section
 	*/
 	private:
+		//GameScreen *currentScreen, *newScreen;
+
 		/*! Operators */
 		const ScreenManager & operator=( const ScreenManager & ); // operator equal
-
-		GameScreen *currentScreen, *newScreen;
-		/*! Attributes */
-		T text; // 
 };
 
 #include "ScreenManager.hpp"

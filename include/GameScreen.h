@@ -5,15 +5,27 @@
 
 class GameScreen
 {
+	/*! 
+     * Public section
+	*/
 	public:
-		GameScreen();
-		~GameScreen();
+		/*! Functions */
+		GameScreen();  // class destructor
+		~GameScreen(); // class constructor	
 
 		virtual void LoadContent();
 		virtual void UnloadContent();
 		virtual void Update();
-		virtual void Draw(sf::RenderWindow & Window);
+		virtual void Draw( sf::RenderWindow &Window );
+
+	/*! 
+     * Protected section
+	*/
 	protected:
+
+	/*!
+     * Private section
+	*/
 	private:
 };
 
