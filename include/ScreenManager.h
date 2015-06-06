@@ -9,6 +9,7 @@
 #include "GameScreen.h"
 #include "SplashScreen.h"
 
+/*! CONSTANTS */
 #define screenWidth 1200
 #define screenHeight 768
 
@@ -24,11 +25,13 @@ class ScreenManager
 		ScreenManager();  // class constructor				
 		ScreenManager( ScreenManager const& ); // class constructor override
 
-		void Initialize();
-		void LoadContent();
-		void UnloadContent();
-		void Update();
-		void Draw( sf::RenderWindow &Window );
+		void Initialize(); // Initialize the screen
+		void LoadContent(); // Load the content on the screen
+		void UnloadContent(); // Unload the content on the screen
+		void Update(); // Update the screen content
+		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
+
+		void AddScreen( GameScreen *screen ); // Add a new screen
 	/*! 
      * Protected section
 	*/

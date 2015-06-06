@@ -14,6 +14,11 @@ int main()
 	sf::RenderWindow Window( sf::VideoMode( screenWidth, screenHeight, 32 ), 
 								"Windows Title");
 
+	/*! ScreenManager instance */
+	ScreenManager<std::string> scrm;
+	scrm.Initialize();
+	scrm.LoadContent();
+
 	/*! Infinite loop that keeps screen */
 	while ( Window.isOpen() )
 	{
@@ -29,6 +34,11 @@ int main()
 				Window.close();
 			}
 		}
+
+		/*! Run SplashScreen */
+		scrm.Update();
+		scrm.Draw(Window);
+
 		/*! Keep the screen showing */
 		Window.display();
 	}

@@ -27,7 +27,7 @@ ScreenManager<T>::~ScreenManager()
 template< typename T >
 void ScreenManager<T>::Initialize()
 {
-	currentScreen = new SplashScreen;
+	currentScreen = new SplashScreen();
 }
 
 /********************************************//**
@@ -55,4 +55,23 @@ template< typename T >
 void ScreenManager<T>::Draw( sf::RenderWindow &Window )
 {
 	currentScreen->Draw( Window );
+}
+
+/********************************************//**
+* \add a new screen
+***********************************************/
+template< typename T >
+void ScreenManager<T>::AddScreen( GameScreen *screen )
+{
+	// Unload the previous screen content
+	currentScreen->UnloadContent();
+
+	// Delete the previous screen
+	delete currentScreen;
+
+	// Create a new screen
+	currentScreen = screen;
+
+	// Load the new content
+	currentScreen->LoadContent();
 }

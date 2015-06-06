@@ -1,9 +1,9 @@
-#include "GameScreen.h"
+#include "TitleScreen.h"
 
 /********************************************//**
 * \class constructor
 ***********************************************/
-GameScreen::GameScreen()
+TitleScreen::TitleScreen()
 {
 	/* Empty */
 }
@@ -11,7 +11,7 @@ GameScreen::GameScreen()
 /********************************************//**
 * \class destructor
 ***********************************************/
-GameScreen::~GameScreen()
+TitleScreen::~TitleScreen()
 {
 	/* Empty */
 }
@@ -19,15 +19,21 @@ GameScreen::~GameScreen()
 /********************************************//**
 * \load content on screen
 ***********************************************/
-void GameScreen::LoadContent()
+void TitleScreen::LoadContent()
 {
-	
+	if ( !font.loadFromFile("fonts/8-BIT_WONDER.TTF") )
+	{
+		std::cout << "Could not find the specific font" << std::endl;
+	}
+
+	text.setString("TitleScreen");
+	text.setFont(font);
 }
 
 /********************************************//**
 * \unload screen's content
 ***********************************************/
-void GameScreen::UnloadContent()
+void TitleScreen::UnloadContent()
 {
 
 }
@@ -35,7 +41,7 @@ void GameScreen::UnloadContent()
 /********************************************//**
 * \update screen content
 ***********************************************/
-void GameScreen::Update()
+void TitleScreen::Update()
 {
 
 }
@@ -43,7 +49,7 @@ void GameScreen::Update()
 /********************************************//**
 * \print the screen content
 ***********************************************/
-void GameScreen::Draw( sf::RenderWindow &Window )
+void TitleScreen::Draw( sf::RenderWindow &Window )
 {
-	
+	Window.draw( text );
 }

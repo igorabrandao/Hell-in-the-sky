@@ -13,10 +13,10 @@ class GameScreen
 		GameScreen();  // class destructor
 		~GameScreen(); // class constructor	
 
-		virtual void LoadContent();
-		virtual void UnloadContent();
-		virtual void Update();
-		virtual void Draw( sf::RenderWindow &Window );
+		virtual void LoadContent(); // Load the content on the screen
+		virtual void UnloadContent(); // Unload the content on the screen
+		virtual void Update(); // Update the screen content
+		virtual void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 
 	/*! 
      * Protected section

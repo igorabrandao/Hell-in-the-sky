@@ -1,19 +1,19 @@
-#ifndef SPLASHSCREEN_H
-#define SPLASHSCREEN_H
+#ifndef TITLESCREEN_H
+#define TITLESCREEN_H
 
 #include "GameScreen.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-class SplashScreen : public GameScreen
+class TitleScreen : public GameScreen
 {
 	/*! 
      * Public section
 	*/
 	public:
 		/*! Functions */
-		SplashScreen();
-		~SplashScreen();
+		TitleScreen();
+		~TitleScreen();
 
 		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
