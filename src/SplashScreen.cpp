@@ -28,6 +28,9 @@ void SplashScreen::LoadContent()
 
 	text.setString("SplashScreen");
 	text.setFont(font);
+
+	keys.push_back( sf::Keyboard::Z );
+	keys.push_back( sf::Keyboard::Return );
 }
 
 /********************************************//**
@@ -35,15 +38,20 @@ void SplashScreen::LoadContent()
 ***********************************************/
 void SplashScreen::UnloadContent()
 {
-
+	GameScreen::UnloadContent();
 }
 
 /********************************************//**
 * \update screen content
 ***********************************************/
-void SplashScreen::Update()
+void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
 {
+	input.Update( event );
 
+	if ( input.KeyPressed(keys) )
+	{
+		ScreenManager::GetInstance().AddScreen( new TitleScreen );
+	}
 }
 
 /********************************************//**

@@ -29,13 +29,14 @@ void GameScreen::LoadContent()
 ***********************************************/
 void GameScreen::UnloadContent()
 {
-
+	keys.clear();
+	//input = NULL;
 }
 
 /********************************************//**
 * \update screen content
 ***********************************************/
-void GameScreen::Update()
+void GameScreen::Update( sf::RenderWindow &Window, sf::Event event )
 {
 
 }

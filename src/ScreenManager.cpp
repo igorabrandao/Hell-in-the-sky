@@ -5,27 +5,26 @@
 #include "ScreenManager.h"
 
 GameScreen *currentScreen, *newScreen;
-/********************************************//**
-* \class constructor
-***********************************************/
-template< typename T >
-ScreenManager<T>::ScreenManager()
-{ 
 
+/********************************************//**
+* \instance generator
+***********************************************/
+ScreenManager &ScreenManager::GetInstance()
+{
+	static ScreenManager instance;
+	return instance;
 }
 
 /********************************************//**
 * \class destructor
 ***********************************************/
-template< typename T >
-ScreenManager<T>::~ScreenManager()
+ScreenManager::~ScreenManager()
 { }
 
 /********************************************//**
 * \generate new screen instance
 ***********************************************/
-template< typename T >
-void ScreenManager<T>::Initialize()
+void ScreenManager::Initialize()
 {
 	currentScreen = new SplashScreen();
 }
@@ -33,8 +32,7 @@ void ScreenManager<T>::Initialize()
 /********************************************//**
 * \screen's content loader
 ***********************************************/
-template< typename T >
-void ScreenManager<T>::LoadContent()
+void ScreenManager::LoadContent()
 {
 	currentScreen->LoadContent();
 }
@@ -42,17 +40,15 @@ void ScreenManager<T>::LoadContent()
 /********************************************//**
 * \screen's content unloader
 ***********************************************/
-template< typename T>
-void ScreenManager<T>::Update()
+void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
 {
-	currentScreen->Update();
+	currentScreen->Update( Window, event );
 }
 
 /********************************************//**
 * \print the content on screen
 ***********************************************/
-template< typename T >
-void ScreenManager<T>::Draw( sf::RenderWindow &Window )
+void ScreenManager::Draw( sf::RenderWindow &Window )
 {
 	currentScreen->Draw( Window );
 }
@@ -60,8 +56,7 @@ void ScreenManager<T>::Draw( sf::RenderWindow &Window )
 /********************************************//**
 * \add a new screen
 ***********************************************/
-template< typename T >
-void ScreenManager<T>::AddScreen( GameScreen *screen )
+void ScreenManager::AddScreen( GameScreen *screen )
 {
 	// Unload the previous screen content
 	currentScreen->UnloadContent();

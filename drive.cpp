@@ -15,9 +15,13 @@ int main()
 								"Windows Title");
 
 	/*! ScreenManager instance */
-	ScreenManager<std::string> scrm;
+	/*ScreenManager scrm;
 	scrm.Initialize();
-	scrm.LoadContent();
+	scrm.LoadContent();*/
+	ScreenManager::GetInstance().Initialize();
+	ScreenManager::GetInstance().LoadContent();
+
+	Window.setKeyRepeatEnabled(false);
 
 	/*! Infinite loop that keeps screen */
 	while ( Window.isOpen() )
@@ -29,15 +33,20 @@ int main()
 		if ( Window.pollEvent(event) )
 		{
 			/*! Check if it's a close event */
-			if ( event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape  )
+			if ( event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape )
 			{
 				Window.close();
 			}
 		}
 
+		/*! Clear screen before load a new content */
+		Window.clear();
+
 		/*! Run SplashScreen */
-		scrm.Update();
-		scrm.Draw(Window);
+		/*scrm.Update(event);
+		scrm.Draw(Window);*/
+		ScreenManager::GetInstance().Update(Window, event);
+		ScreenManager::GetInstance().Draw(Window);
 
 		/*! Keep the screen showing */
 		Window.display();
