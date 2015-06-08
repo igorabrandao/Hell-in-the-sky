@@ -27,6 +27,7 @@ ScreenManager::~ScreenManager()
 void ScreenManager::Initialize()
 {
 	currentScreen = new SplashScreen();
+	transition = false;
 }
 
 /********************************************//**
@@ -35,6 +36,11 @@ void ScreenManager::Initialize()
 void ScreenManager::LoadContent()
 {
 	currentScreen->LoadContent();
+
+	sf::Texture image;
+	sf::Vector2f pos;
+	fade.LoadContent("", image, pos);
+	fade.SetAlpha(0.0f);
 }
 
 /********************************************//**
@@ -42,7 +48,9 @@ void ScreenManager::LoadContent()
 ***********************************************/
 void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
 {
-	currentScreen->Update( Window, event );
+	if ( !transition )
+		currentScreen->Update( Window, event );
+	Transition(Window);
 }
 
 /********************************************//**
@@ -58,15 +66,48 @@ void ScreenManager::Draw( sf::RenderWindow &Window )
 ***********************************************/
 void ScreenManager::AddScreen( GameScreen *screen )
 {
-	// Unload the previous screen content
-	currentScreen->UnloadContent();
+	// Set transition state as true
+	transition = true;
 
-	// Delete the previous screen
-	delete currentScreen;
+	// Pass the pointer to the attribute
+	newScreen = screen;
 
-	// Create a new screen
-	currentScreen = screen;
+	// Activate fade transition effect
+	fade.SetActive(true);
 
-	// Load the new content
-	currentScreen->LoadContent();
+	// Define the fade transition value
+	fade.SetAlpha(0.0f);
+}
+
+/********************************************//**
+* \handle screen transition
+***********************************************/
+void ScreenManager::Transition( sf::RenderWindow &Window )
+{
+	if ( transition )
+	{
+		fade.Update(Window);
+
+		if ( fade.GetAlpha() >= 1.0f )
+		{
+			currentScreen->UnloadContent();
+			delete currentScreen;
+			currentScreen = newScreen;
+			currentScreen->LoadContent();
+			newScreen = NULL;
+		}
+		else if ( fade.GetAlpha() <= 0.0f )
+		{
+			transition = false;
+			fade.SetActive(false);
+		}
+	}
+}
+
+/********************************************//**
+* \get animation alpha value
+***********************************************/
+float ScreenManager::GetAlpha()
+{
+	return fade.GetAlpha();
 }

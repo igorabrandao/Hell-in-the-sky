@@ -9,6 +9,7 @@
 #include "GameScreen.h"
 #include "SplashScreen.h"
 #include "TitleScreen.h"
+#include "FadeAnimation.h"
 
 /*! CONSTANTS */
 #define screenWidth 1200
@@ -31,6 +32,9 @@ class ScreenManager
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 
 		void AddScreen( GameScreen *screen ); // Add a new screen
+
+		float GetAlpha(); // Get the alpha value for transitions
+		//void GetFrameTime(); // Catch the timer clock
 	/*! 
      * Protected section
 	*/
@@ -42,8 +46,18 @@ class ScreenManager
 	private:
 		//GameScreen *currentScreen, *newScreen;
 
-		/*! Operators */
+		/*! Functions */
+		//ScreenManager(); // class constructor
+		//ScreenManager( ScreenManager const& ); // class constructor
 		const ScreenManager & operator=( const ScreenManager & ); // operator equal
+
+		/*! Attributes */
+		void Transition( sf::RenderWindow &Window ); // handle screen transition
+		bool transition;
+
+		/*! Classes instances */
+		FadeAnimation fade;
+		GameScreen *newScreen;
 };
 
 #endif // SCREENMANAGER_H
