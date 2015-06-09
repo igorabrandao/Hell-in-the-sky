@@ -9,6 +9,7 @@
 #include "GameScreen.h"
 #include "SplashScreen.h"
 #include "TitleScreen.h"
+#include "LevelScreen.h"
 #include "FadeAnimation.h"
 
 /*! CONSTANTS */

@@ -1,9 +1,9 @@
-#include "TitleScreen.h"
+#include "LevelScreen.h"
 
 /********************************************//**
 * \class constructor
 ***********************************************/
-TitleScreen::TitleScreen()
+LevelScreen::LevelScreen()
 {
 	/* Empty */
 }
@@ -11,7 +11,7 @@ TitleScreen::TitleScreen()
 /********************************************//**
 * \class destructor
 ***********************************************/
-TitleScreen::~TitleScreen()
+LevelScreen::~LevelScreen()
 {
 	/* Empty */
 }
@@ -19,23 +19,24 @@ TitleScreen::~TitleScreen()
 /********************************************//**
 * \load content on screen
 ***********************************************/
-void TitleScreen::LoadContent()
+void LevelScreen::LoadContent()
 {
 	if ( !font.loadFromFile("assets/fonts/8-BIT_WONDER.TTF") )
 	{
 		std::cout << "Could not find the specific font" << std::endl;
 	}
 
-	text.setString("TitleScreen");
+	text.setString("LevelScreen");
 	text.setFont(font);
 
+	keys.push_back( sf::Keyboard::Z );
 	keys.push_back( sf::Keyboard::Return );
 }
 
 /********************************************//**
 * \unload screen's content
 ***********************************************/
-void TitleScreen::UnloadContent()
+void LevelScreen::UnloadContent()
 {
 	GameScreen::UnloadContent();
 }
@@ -43,20 +44,20 @@ void TitleScreen::UnloadContent()
 /********************************************//**
 * \update screen content
 ***********************************************/
-void TitleScreen::Update( sf::RenderWindow &Window, sf::Event event )
+void LevelScreen::Update( sf::RenderWindow &Window, sf::Event event )
 {
 	input.Update( event );
 
 	if ( input.KeyPressed(keys) )
 	{
-		ScreenManager::GetInstance().AddScreen( new LevelScreen );
+		ScreenManager::GetInstance().AddScreen( new TitleScreen );
 	}
 }
 
 /********************************************//**
 * \print the screen content
 ***********************************************/
-void TitleScreen::Draw( sf::RenderWindow &Window )
+void LevelScreen::Draw( sf::RenderWindow &Window )
 {
 	Window.draw( text );
 }

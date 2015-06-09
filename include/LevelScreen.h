@@ -1,21 +1,21 @@
-#ifndef TITLESCREEN_H
-#define TITLESCREEN_H
+#ifndef LevelScreen_H
+#define LevelScreen_H
 
 #include "GameScreen.h"
+#include "TitleScreen.h"
 #include "ScreenManager.h"
-#include "LevelScreen.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-class TitleScreen : public GameScreen
+class LevelScreen : public GameScreen
 {
 	/*! 
      * Public section
 	*/
 	public:
 		/*! Functions */
-		TitleScreen();
-		~TitleScreen();
+		LevelScreen();
+		~LevelScreen();
 
 		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
@@ -34,6 +34,13 @@ class TitleScreen : public GameScreen
 		/*! Attributes */
 		sf::Text text;
 		sf::Font font;
+		//sf::Texture background;
+		//sf::Sound sound;
+
+		//int level;
+		//list<int/*Enemies object*/> enemies;
+		//GameObject player; // Instance player class
+
 };
 
-#endif // SPLASHSCREEN_H
+#endif // LevelScreen_H

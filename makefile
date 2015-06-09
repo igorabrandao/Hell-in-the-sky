@@ -1,2 +1,27 @@
-all:
-	g++ -std=c++0x drive.cpp src/ScreenManager.cpp src/InputManager.cpp src/GameScreen.cpp src/SplashScreen.cpp src/TitleScreen.cpp src/Animation.cpp src/FadeAnimation.cpp -I include/ -lsfml-graphics -lsfml-window -lsfml-system -o drive
+#
+# Makefile build 'Hell_in_the_sky' using Make
+#
+
+SOURCES = $(wildcard src/*.cpp)
+
+CC      = g++
+CFLAGS  = -c -Wall -std=c++11
+
+INC_DIR = ./include
+BIN_DIR = ./bin
+APP     = $(BIN_DIR)/hell
+LIB_DIR = 
+LIBS = \
+	-lsfml-graphics         \
+	-lsfml-window           \
+	-lsfml-system
+
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(SOURCES) $(APP)
+    
+$(APP): $(OBJECTS) 
+	$(CC) -o $@ $(OBJECTS) $(LIBS)
+
+.cpp.o:
+	$(CC) $< -o $@ $(CFLAGS) -I$(INC_DIR)

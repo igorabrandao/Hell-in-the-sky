@@ -21,7 +21,7 @@ SplashScreen::~SplashScreen()
 ***********************************************/
 void SplashScreen::LoadContent()
 {
-	if ( !font.loadFromFile("fonts/8-BIT_WONDER.TTF") )
+	if ( !font.loadFromFile("assets/fonts/8-BIT_WONDER.TTF") )
 	{
 		std::cout << "Could not find the specific font" << std::endl;
 	}
@@ -29,7 +29,6 @@ void SplashScreen::LoadContent()
 	text.setString("SplashScreen");
 	text.setFont(font);
 
-	keys.push_back( sf::Keyboard::Z );
 	keys.push_back( sf::Keyboard::Return );
 }
 
