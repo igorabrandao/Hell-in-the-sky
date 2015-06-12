@@ -4,6 +4,7 @@
 #include "GameScreen.h"
 #include "TitleScreen.h"
 #include "ScreenManager.h"
+#include "FadeAnimation.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -17,7 +18,6 @@ class SplashScreen : public GameScreen
 		SplashScreen();
 		~SplashScreen();
 
-		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
 		void UnloadContent(); // Unload the content on the screen
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content
@@ -34,6 +34,11 @@ class SplashScreen : public GameScreen
 		/*! Attributes */
 		sf::Text text;
 		sf::Font font;
+		sf::Texture image;
+
+		std::vector<FadeAnimation*> fade;
+
+		int unsigned imageNumber;
 };
 
 #endif // SPLASHSCREEN_H

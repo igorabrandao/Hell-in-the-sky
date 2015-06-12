@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Animation.h"
+#include <iostream>
 
 class FadeAnimation : public Animation
 {
@@ -12,7 +13,7 @@ class FadeAnimation : public Animation
 		FadeAnimation(void);
 		~FadeAnimation(void);
 
-		void LoadContent( std::string text, sf::Texture, sf::Vector2f position ); // Load the content on the screen
+		void LoadContent( std::string text, sf::Texture image, sf::Vector2f position ); // Load the content on the screen
 		void UnloadContent(); // Unload the content on the screen
 		void Update( sf::RenderWindow &Window ); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
@@ -30,4 +31,7 @@ class FadeAnimation : public Animation
 		/*! Attributes */
 		bool increase;
 		float fadeSpeed;
+
+		/*! Objects */
+		sf::Clock clock; // starts the clock
 };

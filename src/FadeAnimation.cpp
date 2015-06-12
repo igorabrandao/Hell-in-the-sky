@@ -19,7 +19,7 @@ FadeAnimation::~FadeAnimation(void)
 /********************************************//**
 * \content loader
 ***********************************************/
-void FadeAnimation::LoadContent( std::string text, sf::Texture, sf::Vector2f position )
+void FadeAnimation::LoadContent( std::string text, sf::Texture image, sf::Vector2f position )
 {
 	Animation::LoadContent(text, image, position);
 	increase = false;
@@ -39,12 +39,18 @@ void FadeAnimation::UnloadContent()
 ***********************************************/
 void FadeAnimation::Update( sf::RenderWindow &Window )
 {
+	//sf::Time dt = clock.restart();
 	if ( active )
 	{
-		if ( !increase )
-			alpha -= 0.075 * fadeSpeed;
+		/*if ( !increase )
+			alpha -= dt.asSeconds() * fadeSpeed;
 		else
-			alpha += 0.075 * fadeSpeed;
+			alpha += dt.asSeconds() * fadeSpeed;*/
+
+		if ( !increase )
+			alpha -= 0.02 * fadeSpeed;
+		else
+			alpha += 0.02 * fadeSpeed;
 
 		if ( alpha >= 1.0f )
 		{
@@ -61,6 +67,8 @@ void FadeAnimation::Update( sf::RenderWindow &Window )
 	{
 		alpha = 1.0f;
 	}
+
+	Animation::Update(Window);
 }
 
 /********************************************//**

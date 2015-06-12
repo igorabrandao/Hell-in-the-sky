@@ -2,6 +2,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Animation
 {
@@ -13,7 +14,7 @@ class Animation
 		Animation();
 		~Animation();
 
-		virtual void LoadContent( std::string text, sf::Texture, sf::Vector2f position ); // Load the content on the screen
+		virtual void LoadContent( std::string text, sf::Texture image, sf::Vector2f position ); // Load the content on the screen
 		virtual void UnloadContent(); // Unload the content on the screen
 		virtual void Update( sf::RenderWindow &Window ); // Update the screen content
 		virtual void Draw( sf::RenderWindow &Window ); // Print the content on the screen

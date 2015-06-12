@@ -21,6 +21,8 @@ SplashScreen::~SplashScreen()
 ***********************************************/
 void SplashScreen::LoadContent()
 {
+	imageNumber = 0;
+
 	if ( !font.loadFromFile("assets/fonts/8-BIT_WONDER.TTF") )
 	{
 		std::cout << "Could not find the specific font" << std::endl;
@@ -29,7 +31,27 @@ void SplashScreen::LoadContent()
 	text.setString("SplashScreen");
 	text.setFont(font);
 
-	keys.push_back( sf::Keyboard::Return );
+	/* Keys that trigger the event */
+	keys.push_back(sf::Keyboard::Return);
+
+	file.LoadContent("assets/settings/splash.hell", attributes, contents);
+
+	for ( int unsigned i = 0; i < attributes.size(); i++ )
+	{
+		for ( int unsigned j = 0; j < attributes[i].size(); j++ )
+		{
+			std::string att = attributes[i][j];
+
+			if ( att == "Image" )
+			{
+				sf::Vector2f pos(0, 0);
+				image.loadFromFile(contents[i][j]);
+				fade.push_back(new FadeAnimation);
+				fade[fade.size() - 1]->LoadContent("", image, pos);
+				fade[fade.size() - 1]->SetActive(true);
+			}
+		}
+	}
 }
 
 /********************************************//**
@@ -38,6 +60,13 @@ void SplashScreen::LoadContent()
 void SplashScreen::UnloadContent()
 {
 	GameScreen::UnloadContent();
+
+	for ( int unsigned i = 0; i < fade.size(); i++ )
+	{
+		fade[i]->UnloadContent();
+		delete fade[i];
+	}
+	fade.clear();
 }
 
 /********************************************//**
@@ -47,9 +76,15 @@ void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
 {
 	input.Update( event );
 
-	if ( input.KeyPressed(keys) )
+	if ( fade[imageNumber]->GetAlpha() <= 0.0f )
+		imageNumber++;
+
+	if ( imageNumber != fade.size() - 1 );
+		fade[imageNumber]->Update(Window);
+
+	if ( input.KeyPressed(keys) || imageNumber >= fade.size() - 1 )
 	{
-		ScreenManager::GetInstance().AddScreen( new TitleScreen );
+		ScreenManager::GetInstance().AddScreen(new TitleScreen);
 	}
 }
 
@@ -58,5 +93,6 @@ void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
 ***********************************************/
 void SplashScreen::Draw( sf::RenderWindow &Window )
 {
-	Window.draw( text );
+	//Window.draw(text);
+	fade[imageNumber]->Draw(Window);
 }

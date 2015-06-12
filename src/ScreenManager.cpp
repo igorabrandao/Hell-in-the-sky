@@ -28,6 +28,8 @@ void ScreenManager::Initialize()
 {
 	currentScreen = new SplashScreen();
 	transition = false;
+
+	//file.LoadContent("assets/settings/test.hell", attributes, contents);
 }
 
 /********************************************//**
@@ -49,7 +51,7 @@ void ScreenManager::LoadContent()
 void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
 {
 	if ( !transition )
-		currentScreen->Update( Window, event );
+		currentScreen->Update(Window, event);
 	Transition(Window);
 }
 
@@ -58,7 +60,7 @@ void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
 ***********************************************/
 void ScreenManager::Draw( sf::RenderWindow &Window )
 {
-	currentScreen->Draw( Window );
+	currentScreen->Draw(Window);
 }
 
 /********************************************//**

@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "InputManager.h"
+#include "FileManager.h"
 
 class GameScreen
 {
@@ -25,6 +26,12 @@ class GameScreen
 	protected:
 		InputManager input;
 		std::vector<int> keys;
+
+		/*! Classes instances */
+		FileManager file;
+
+		std::vector<std::vector<std::string>> attributes;
+		std::vector<std::vector<std::string>> contents;
 
 	/*!
      * Private section

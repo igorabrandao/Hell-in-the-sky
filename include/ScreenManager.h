@@ -11,6 +11,7 @@
 #include "TitleScreen.h"
 #include "LevelScreen.h"
 #include "FadeAnimation.h"
+#include "FileManager.h"
 
 /*! CONSTANTS */
 #define screenWidth 1200
@@ -47,9 +48,7 @@ class ScreenManager
 	private:
 		//GameScreen *currentScreen, *newScreen;
 
-		/*! Functions */
-		//ScreenManager(); // class constructor
-		//ScreenManager( ScreenManager const& ); // class constructor
+		/*! Operators */
 		const ScreenManager & operator=( const ScreenManager & ); // operator equal
 
 		/*! Attributes */
@@ -59,6 +58,10 @@ class ScreenManager
 		/*! Classes instances */
 		FadeAnimation fade;
 		GameScreen *newScreen;
+		FileManager file;
+
+		std::vector<std::vector<std::string>> attributes;
+		std::vector<std::vector<std::string>> contents;
 };
 
 #endif // SCREENMANAGER_H
