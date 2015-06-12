@@ -14,8 +14,8 @@
 #include "FileManager.h"
 
 /*! CONSTANTS */
-#define screenWidth 1200
-#define screenHeight 768
+#define screenWidth 800
+#define screenHeight 640
 
 class ScreenManager
 {

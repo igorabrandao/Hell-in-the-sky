@@ -19,7 +19,7 @@ Animation::~Animation()
 /********************************************//**
 * \content loader
 ***********************************************/
-void Animation::LoadContent( std::string text, sf::Texture image, sf::Vector2f position )
+void Animation::LoadContent( std::string text, sf::Texture &image, sf::Vector2f position )
 {
 	this->preText = text;
 	this->image = image;
@@ -48,7 +48,7 @@ void Animation::UnloadContent()
 ***********************************************/
 void Animation::Update( sf::RenderWindow &Window )
 {
-	sprite.setColor(sf::Color(255, 255, 255, 255 * alpha));
+	
 }
 
 /********************************************//**
@@ -58,18 +58,47 @@ void Animation::Draw( sf::RenderWindow &Window )
 {
 	std::string str = text.getString();
 
+	//sprite.setSubRect(sourceRect);
+
 	if ( str != "" )
+	{
+		text.setColor(sf::Color(255, 255, 255, 255 * alpha));
+		text.setPosition(position);
+		text.setScale(scale, scale);
 		Window.draw(text);
-	if ( sprite.getTexture() != NULL)
+	}
+
+	if ( sprite.getTexture() != NULL )
+	{
+		sprite.setColor(sf::Color(255, 255, 255, 255 * alpha));
+		sprite.setPosition(position);
+		sprite.setScale(scale, scale);
 		Window.draw(sprite);
+	}
 }
 
 /********************************************//**
 * \get animation alpha value
 ***********************************************/
-float Animation::GetAlpha()
+float &Animation::GetAlpha()
 {
 	return alpha;
+}
+
+/********************************************//**
+* \get animation active
+***********************************************/
+bool &Animation::GetActive()
+{
+	return active;
+}
+
+/********************************************//**
+* \get animation scale
+***********************************************/
+float &Animation::GetScale()
+{
+	return scale;
 }
 
 /********************************************//**
@@ -78,12 +107,4 @@ float Animation::GetAlpha()
 void Animation::SetAlpha( float value )
 {
 	alpha = value;
-}
-
-/********************************************//**
-* \get animation alpha value
-***********************************************/
-void Animation::SetActive( bool value )
-{
-	active = value;
 }

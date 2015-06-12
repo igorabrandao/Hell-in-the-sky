@@ -75,7 +75,7 @@ void ScreenManager::AddScreen( GameScreen *screen )
 	newScreen = screen;
 
 	// Activate fade transition effect
-	fade.SetActive(true);
+	fade.SetValue(fade.GetActive(), true);
 
 	// Define the fade transition value
 	fade.SetAlpha(0.0f);
@@ -101,7 +101,7 @@ void ScreenManager::Transition( sf::RenderWindow &Window )
 		else if ( fade.GetAlpha() <= 0.0f )
 		{
 			transition = false;
-			fade.SetActive(false);
+			fade.SetValue(fade.GetActive(), false);
 		}
 	}
 }

@@ -48,7 +48,8 @@ void SplashScreen::LoadContent()
 				image.loadFromFile(contents[i][j]);
 				fade.push_back(new FadeAnimation);
 				fade[fade.size() - 1]->LoadContent("", image, pos);
-				fade[fade.size() - 1]->SetActive(true);
+				fade[fade.size() - 1]->SetValue(fade[fade.size() - 1]->GetActive(), true);
+				fade[fade.size() - 1]->SetValue(fade[fade.size() - 1]->GetScale(), 1.25f);
 			}
 		}
 	}

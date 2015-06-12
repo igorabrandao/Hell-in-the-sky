@@ -14,15 +14,25 @@ class Animation
 		Animation();
 		~Animation();
 
-		virtual void LoadContent( std::string text, sf::Texture image, sf::Vector2f position ); // Load the content on the screen
+		virtual void LoadContent( std::string text, sf::Texture &image, sf::Vector2f position ); // Load the content on the screen
 		virtual void UnloadContent(); // Unload the content on the screen
 		virtual void Update( sf::RenderWindow &Window ); // Update the screen content
 		virtual void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 
 		virtual void SetAlpha( float alpha ); // Set the alpha to fade transition
-		float GetAlpha(); // Get the alpha value from fade transition
 
-		void SetActive( bool value );
+		// Get functions
+		float &GetAlpha();
+		bool &GetActive();
+		float &GetScale();
+
+		// Set function
+		template <typename T>
+		void SetValue( T &variable, T value )
+		{
+			variable = value;
+		}
+
 	/*!
      * Protected section
 	*/
@@ -38,6 +48,8 @@ class Animation
 
 		sf::IntRect sourceRect;
 		bool active;
+
+		float scale;
 
 	/*!
      * Private section
