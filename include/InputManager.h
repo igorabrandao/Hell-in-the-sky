@@ -1,3 +1,7 @@
+/********************************************//**
+* \InputManager.h
+* \Class to deals with input's issues
+***********************************************/
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 

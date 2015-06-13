@@ -9,7 +9,6 @@
 #include "GameScreen.h"
 #include "SplashScreen.h"
 #include "TitleScreen.h"
-#include "LevelScreen.h"
 #include "FadeAnimation.h"
 #include "FileManager.h"
 
@@ -29,7 +28,7 @@ class ScreenManager
 
 		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
-		void UnloadContent(); // Unload the content on the screen
+		void UnloadContent(); // Unload memory allocation
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 

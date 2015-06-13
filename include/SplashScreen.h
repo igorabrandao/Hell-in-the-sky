@@ -1,3 +1,7 @@
+/********************************************//**
+* \SplashScreen.h
+* \Class to display game splash screen
+***********************************************/
 #ifndef SPLASHSCREEN_H
 #define SPLASHSCREEN_H
 
@@ -19,7 +23,7 @@ class SplashScreen : public GameScreen
 		~SplashScreen();
 
 		void LoadContent(); // Load the content on the screen
-		void UnloadContent(); // Unload the content on the screen
+		void UnloadContent(); // Unload memory allocation
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 	/*! 

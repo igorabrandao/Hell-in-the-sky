@@ -1,9 +1,14 @@
+/********************************************//**
+* \TitleScreen.h
+* \Class to display game's menu
+***********************************************/
 #ifndef TITLESCREEN_H
 #define TITLESCREEN_H
 
 #include "GameScreen.h"
+//#include "SplashScreen.h"
 #include "ScreenManager.h"
-#include "LevelScreen.h"
+#include "MenuManager.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -17,9 +22,8 @@ class TitleScreen : public GameScreen
 		TitleScreen();
 		~TitleScreen();
 
-		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
-		void UnloadContent(); // Unload the content on the screen
+		void UnloadContent(); // Unload memory allocation
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 	/*! 
@@ -34,6 +38,9 @@ class TitleScreen : public GameScreen
 		/*! Attributes */
 		sf::Text text;
 		sf::Font font;
+
+		/*! Classes instances */
+		MenuManager menu;
 };
 
-#endif // SPLASHSCREEN_H
+#endif // TITLESCREEN_H

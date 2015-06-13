@@ -1,3 +1,7 @@
+/********************************************//**
+* \Animation.h
+* \Class to handle all game's animation
+***********************************************/
 #pragma once
 
 #include <string>
@@ -25,6 +29,8 @@ class Animation
 		float &GetAlpha();
 		bool &GetActive();
 		float &GetScale();
+		sf::Text &GetText();
+		sf::Vector2f &GetPosition();
 
 		// Set function
 		template <typename T>

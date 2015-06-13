@@ -1,3 +1,7 @@
+/********************************************//**
+* \FadeAnimation.h
+* \Class to deal with fade animation
+***********************************************/
 #pragma once
 
 #include "Animation.h"

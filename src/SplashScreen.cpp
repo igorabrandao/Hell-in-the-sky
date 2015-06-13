@@ -4,7 +4,7 @@
 * \class constructor
 ***********************************************/
 SplashScreen::SplashScreen()
-{
+{std::cout << "SplashScreen::SplashScreen()" << std::endl;
 	/* Empty */
 }
 
@@ -20,7 +20,7 @@ SplashScreen::~SplashScreen()
 * \load content on screen
 ***********************************************/
 void SplashScreen::LoadContent()
-{
+{std::cout << "SplashScreen::LoadContent()" << std::endl;
 	imageNumber = 0;
 
 	if ( !font.loadFromFile("assets/fonts/8-BIT_WONDER.TTF") )
@@ -59,7 +59,7 @@ void SplashScreen::LoadContent()
 * \unload screen's content
 ***********************************************/
 void SplashScreen::UnloadContent()
-{
+{std::cout << "SplashScreen::UnloadContent()" << std::endl;
 	GameScreen::UnloadContent();
 
 	for ( int unsigned i = 0; i < fade.size(); i++ )
@@ -74,7 +74,7 @@ void SplashScreen::UnloadContent()
 * \update screen content
 ***********************************************/
 void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
-{
+{std::cout << "SplashScreen::Update(): " << imageNumber << " - " << fade.size() << std::endl;
 	input.Update( event );
 
 	if ( fade[imageNumber]->GetAlpha() <= 0.0f )
@@ -85,6 +85,9 @@ void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
 
 	if ( input.KeyPressed(keys) || imageNumber >= fade.size() - 1 )
 	{
+		std::cout << "*************************" << std::endl;
+		std::cout << "=======TitleScreen=======" << std::endl;
+		std::cout << "*************************" << std::endl;
 		ScreenManager::GetInstance().AddScreen(new TitleScreen);
 	}
 }
@@ -93,7 +96,7 @@ void SplashScreen::Update( sf::RenderWindow &Window, sf::Event event )
 * \print the screen content
 ***********************************************/
 void SplashScreen::Draw( sf::RenderWindow &Window )
-{
+{std::cout << "SplashScreen::Draw(): " << imageNumber << std::endl;
 	//Window.draw(text);
 	fade[imageNumber]->Draw(Window);
 }

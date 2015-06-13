@@ -1,3 +1,7 @@
+/********************************************//**
+* \FileManager.h
+* \Class to deals with file's issues
+***********************************************/
 #pragma once
 
 #include <vector>
@@ -21,6 +25,11 @@ class FileManager
 		void LoadContent( const char* filename, std::vector<std::vector<std::string>> &attributes,
 			std::vector<std::vector<std::string>> &contents );
 
+		/*! Load content from file */
+		void LoadContent( const char* filename, std::vector<std::vector<std::string>> &attributes,
+			std::vector<std::vector<std::string>> &contents,
+			std::string id);
+
 	/*!
      * Protected section
 	*/
@@ -35,4 +44,5 @@ class FileManager
 		std::vector<std::string> tempAttributes;
 		std::vector<std::string> tempContents;
 
+		bool idFound;
 };
