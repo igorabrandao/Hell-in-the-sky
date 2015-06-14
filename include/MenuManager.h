@@ -12,9 +12,9 @@
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #define MAX_NUMBER_OF_ITEMS 3
-
 
 class MenuManager
 {
@@ -43,5 +43,9 @@ class MenuManager
 		/*! Attributes */
 		int selectedItemIndex;
 		sf::Font font;
+		sf::SoundBuffer buffer;
+		sf::Sound sound;
+		sf::Texture background;
+		sf::Sprite image;
 		sf::Text menu[MAX_NUMBER_OF_ITEMS];
 };

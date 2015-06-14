@@ -13,6 +13,7 @@ APP     = $(BIN_DIR)/hell
 LIB_DIR = 
 LIBS = \
 	-lsfml-graphics         \
+	-lsfml-audio 	        \
 	-lsfml-window           \
 	-lsfml-system
 

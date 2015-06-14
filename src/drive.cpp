@@ -12,7 +12,7 @@ int main()
 {
 	/*! Generate new windows */
 	sf::RenderWindow Window( sf::VideoMode( screenWidth, screenHeight, 32 ), 
-								"Windows Title");
+								"Hell in the Sky");
 
 	/*! Object to handle fade geometric */
 	sf::RectangleShape Fade = sf::RectangleShape( sf::Vector2f(screenWidth, screenHeight) );
