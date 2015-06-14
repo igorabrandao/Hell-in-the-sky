@@ -2,7 +2,6 @@
 #define LevelScreen_H
 
 #include "GameScreen.h"
-#include "TitleScreen.h"
 #include "ScreenManager.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -17,7 +16,6 @@ class LevelScreen : public GameScreen
 		LevelScreen();
 		~LevelScreen();
 
-		void Initialize(); // Initialize the screen
 		void LoadContent(); // Load the content on the screen
 		void UnloadContent(); // Unload the content on the screen
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content

@@ -20,7 +20,7 @@ LevelScreen::~LevelScreen()
 * \load content on screen
 ***********************************************/
 void LevelScreen::LoadContent()
-{
+{std::cout << "LevelScreen::LoadContent()" << std::endl;
 	if ( !font.loadFromFile("assets/fonts/8-BIT_WONDER.TTF") )
 	{
 		std::cout << "Could not find the specific font" << std::endl;
@@ -48,10 +48,10 @@ void LevelScreen::Update( sf::RenderWindow &Window, sf::Event event )
 {
 	input.Update( event );
 
-	if ( input.KeyPressed(keys) )
+	/*if ( input.KeyPressed(keys) )
 	{
 		ScreenManager::GetInstance().AddScreen( new TitleScreen );
-	}
+	}*/
 }
 
 /********************************************//**

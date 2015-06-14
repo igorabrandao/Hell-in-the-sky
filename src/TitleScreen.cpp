@@ -40,7 +40,7 @@ void TitleScreen::LoadContent()
 ***********************************************/
 void TitleScreen::UnloadContent()
 {
-	//GameScreen::UnloadContent();
+	GameScreen::UnloadContent();
 }
 
 /********************************************//**
@@ -74,7 +74,8 @@ void TitleScreen::Update( sf::RenderWindow &Window, sf::Event event )
 					{
 						/*! New game */
 						case 0:
-							ScreenManager::GetInstance().AddScreen( new LevelScreen );
+							ScreenManager::GetInstance().AddScreen(new LevelScreen);
+							menu.SoundStop();
 							break;
 
 						/*! Options */
@@ -87,7 +88,7 @@ void TitleScreen::Update( sf::RenderWindow &Window, sf::Event event )
 							Window.close();
 							break;
 
-					}break;
+					} break;
 
 			} break;
 

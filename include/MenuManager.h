@@ -31,6 +31,7 @@ class MenuManager
 		void MoveUp(); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
 		int GetPressedItem() { return selectedItemIndex; }
+		void SoundStop() { sound.stop(); }
 	/*! 
      * Protected section
 	*/
