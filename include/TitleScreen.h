@@ -6,7 +6,7 @@
 #define TITLESCREEN_H
 
 #include "GameScreen.h"
-//#include "SplashScreen.h"
+#include "SplashScreen.h"
 #include "ScreenManager.h"
 #include "MenuManager.h"
 #include <iostream>

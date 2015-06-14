@@ -10,7 +10,7 @@ GameScreen *currentScreen, *newScreen;
 * \instance generator
 ***********************************************/
 ScreenManager &ScreenManager::GetInstance()
-{std::cout << "ScreenManager::GetInstance()" << std::endl;
+{
 	static ScreenManager instance;
 	return instance;
 }
@@ -19,24 +19,26 @@ ScreenManager &ScreenManager::GetInstance()
 * \class destructor
 ***********************************************/
 ScreenManager::~ScreenManager()
-{ }
+{
+	/* empty */
+}
 
 /********************************************//**
 * \generate new screen instance
 ***********************************************/
 void ScreenManager::Initialize()
-{std::cout << "ScreenManager::Initialize()" << std::endl;
+{
 	currentScreen = new SplashScreen();
 	transition = false;
 
-	//file.LoadContent("assets/settings/test.hell", attributes, contents);
+	//file.LoadContent("assets/settings/splash.hell", attributes, contents);
 }
 
 /********************************************//**
 * \screen's content loader
 ***********************************************/
 void ScreenManager::LoadContent()
-{std::cout << "ScreenManager::LoadContent()" << std::endl;
+{
 	currentScreen->LoadContent();
 
 	sf::Texture image;
@@ -49,7 +51,7 @@ void ScreenManager::LoadContent()
 * \screen's content unloader
 ***********************************************/
 void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
-{std::cout << "ScreenManager::Update()" << std::endl;
+{
 	if ( !transition )
 		currentScreen->Update(Window, event);
 	Transition(Window);
@@ -59,7 +61,7 @@ void ScreenManager::Update( sf::RenderWindow &Window, sf::Event event )
 * \print the content on screen
 ***********************************************/
 void ScreenManager::Draw( sf::RenderWindow &Window )
-{std::cout << "ScreenManager::Draw()" << std::endl;
+{
 	currentScreen->Draw(Window);
 }
 
@@ -67,7 +69,7 @@ void ScreenManager::Draw( sf::RenderWindow &Window )
 * \add a new screen
 ***********************************************/
 void ScreenManager::AddScreen( GameScreen *screen )
-{std::cout << "ScreenManager::AddScreen()" << std::endl;
+{
 	// Set transition state as true
 	transition = true;
 
@@ -85,7 +87,7 @@ void ScreenManager::AddScreen( GameScreen *screen )
 * \handle screen transition
 ***********************************************/
 void ScreenManager::Transition( sf::RenderWindow &Window )
-{std::cout << "ScreenManager::Transition()" << std::endl;
+{
 	if ( transition )
 	{
 		fade.Update(Window);
@@ -110,6 +112,6 @@ void ScreenManager::Transition( sf::RenderWindow &Window )
 * \get animation alpha value
 ***********************************************/
 float ScreenManager::GetAlpha()
-{std::cout << "ScreenManager::GetAlpha()" << std::endl;
+{
 	return fade.GetAlpha();
 }

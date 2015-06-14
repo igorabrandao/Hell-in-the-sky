@@ -6,7 +6,6 @@
 MenuManager::MenuManager( void )
 {	
 	/* Empty */
-	std::cout << "MenuManager::MenuManager( void )" << std::endl;
 }
 
 /********************************************//**
@@ -15,7 +14,6 @@ MenuManager::MenuManager( void )
 MenuManager::~MenuManager( void )
 {
 	/* Empty */
-	std::cout << "MenuManager::~MenuManager( void )" << std::endl;
 }
 
 /********************************************//**
@@ -23,7 +21,7 @@ MenuManager::~MenuManager( void )
 	equals attributes
 ***********************************************/
 void MenuManager::EqualizeMenuItems()
-{std::cout << "MenuManager::EqualizeMenuItems()" << std::endl;
+{
 	for ( int unsigned i = 0; i < menuItems.size(); i++ )
 	{
 		if ( menuImages.size() == i )
@@ -45,7 +43,7 @@ void MenuManager::EqualizeMenuItems()
 * \set manu animation
 ***********************************************/
 void MenuManager::SetAnimations()
-{std::cout << "MenuManager::SetAnimations()" << std::endl;
+{
 	for ( int unsigned i = 0; i < menuItems.size(); i++ )
 	{
 		for ( int unsigned j = 0; j < animationTypes.size(); j++ )
@@ -66,7 +64,7 @@ void MenuManager::SetAnimations()
 * \set menu position
 ***********************************************/
 void MenuManager::SetPositions()
-{std::cout << "MenuManager::SetPositions()" << std::endl;
+{
 	sf::Vector2f pos = position;
 	for ( int unsigned i = 0; i < animation.size(); i++ )
 	{
@@ -89,7 +87,7 @@ void MenuManager::SetPositions()
 * \load content on screen
 ***********************************************/
 void MenuManager::LoadContent( std::string menuID )
-{std::cout << "MenuManager::LoadContent()" << std::endl;
+{
 	null.loadFromFile("assets/images/general/not_found.png");
 	itemNumber = 0;
 
@@ -146,7 +144,7 @@ void MenuManager::LoadContent( std::string menuID )
 * \unload menu content
 ***********************************************/
 void MenuManager::UnloadContent()
-{std::cout << "MenuManager::UnloadContent()" << std::endl;
+{
 	menuItems.clear();
 	menuImages.clear();
 
@@ -169,7 +167,7 @@ void MenuManager::UnloadContent()
 * \update menu content
 ***********************************************/
 void MenuManager::Update( sf::RenderWindow &Window, InputManager input )
-{std::cout << "MenuManager::Update()" << std::endl;
+{
 	/*! Check navigation direction
 	 * Axis = 0 -> vertical
 	 * Axis = 1 -> horizontal
@@ -215,7 +213,7 @@ void MenuManager::Update( sf::RenderWindow &Window, InputManager input )
 * \draw menu content
 ***********************************************/
 void MenuManager::Draw( sf::RenderWindow &Window )
-{std::cout << "MenuManager::Draw()" << std::endl;
+{
 	for ( int unsigned i = 0; i < animation.size(); i++ )
 	{
 		for ( int unsigned j = 0; j < animation[i].size(); j++ )

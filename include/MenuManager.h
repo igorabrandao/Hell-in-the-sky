@@ -1,13 +1,14 @@
+/********************************************//**
+* \MenuManager.h
+* \Class to handle menu's issues
+***********************************************/
 #pragma once
 
 #include "Animation.h"
 #include "FadeAnimation.h"
 #include "InputManager.h"
 #include "FileManager.h"
-/********************************************//**
-* \MenuManager.h
-* \Class to handle menu's issues
-***********************************************/
+
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -52,7 +53,7 @@ class MenuManager
 
 		/** Vector that stores menu items and animtions type
 		 * @[0] -> menu items
-		 * @[1] -> animations type (Fade, Zoom, etc...)
+		 * @[1] -> animations type (Fade, Zoom, Scroll, etc...)
 		*/
 		std::vector<std::vector<Animation*>> animation;
 		std::vector<Animation*> tempAnimation;
