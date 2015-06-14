@@ -102,22 +102,6 @@ float &Animation::GetScale()
 }
 
 /********************************************//**
-* \get position
-***********************************************/
-sf::Vector2f &Animation::GetPosition()
-{
-	return position;
-}
-
-/********************************************//**
-* \get position
-***********************************************/
-sf::Text &Animation::GetText()
-{
-	return text;
-}
-
-/********************************************//**
 * \set animation alpha value
 ***********************************************/
 void Animation::SetAlpha( float value )

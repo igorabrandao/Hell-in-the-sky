@@ -19,9 +19,7 @@ ScreenManager &ScreenManager::GetInstance()
 * \class destructor
 ***********************************************/
 ScreenManager::~ScreenManager()
-{
-	/* empty */
-}
+{ }
 
 /********************************************//**
 * \generate new screen instance
@@ -31,7 +29,7 @@ void ScreenManager::Initialize()
 	currentScreen = new SplashScreen();
 	transition = false;
 
-	//file.LoadContent("assets/settings/splash.hell", attributes, contents);
+	//file.LoadContent("assets/settings/test.hell", attributes, contents);
 }
 
 /********************************************//**

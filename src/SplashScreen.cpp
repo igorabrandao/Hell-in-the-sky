@@ -60,7 +60,7 @@ void SplashScreen::LoadContent()
 ***********************************************/
 void SplashScreen::UnloadContent()
 {
-	//GameScreen::UnloadContent();
+	GameScreen::UnloadContent();
 
 	for ( int unsigned i = 0; i < fade.size(); i++ )
 	{

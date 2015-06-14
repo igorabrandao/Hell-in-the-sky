@@ -4,14 +4,17 @@
 ***********************************************/
 #pragma once
 
-#include "Animation.h"
+/*#include "Animation.h"
 #include "FadeAnimation.h"
 #include "InputManager.h"
-#include "FileManager.h"
+#include "FileManager.h"*/
 
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
+
+#define MAX_NUMBER_OF_ITEMS 3
+
 
 class MenuManager
 {
@@ -20,13 +23,14 @@ class MenuManager
 	*/
 	public:
 		/*! Functions */
-		MenuManager(void);
-		~MenuManager(void);	
+		MenuManager();
+		~MenuManager();	
 
-		void LoadContent( std::string menuID ); // Load the content on the screen
-		void UnloadContent(); // Unload memory allocation
-		void Update( sf::RenderWindow &Window, InputManager input ); // Update the screen content
+		void LoadContent( float width, float height );
+		void MoveDown(); // Unload memory allocation
+		void MoveUp(); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
+		int GetPressedItem() { return selectedItemIndex; }
 	/*! 
      * Protected section
 	*/
@@ -37,39 +41,7 @@ class MenuManager
 	*/
 	private:
 		/*! Attributes */
-
-		/** Vectors that receive configs parameters from file
-		 * attributes -> stores attributes param
-		 * contents -> stores attributes content
-		*/
-		std::vector<std::vector<std::string>> attributes;
-		std::vector<std::vector<std::string>> contents;
-
-		sf::Texture image; // Image that'll be loaded
-		sf::Texture null; // Default image
-
-		/*! Classes instances */
-		FileManager file;
-
-		/** Vector that stores menu items and animtions type
-		 * @[0] -> menu items
-		 * @[1] -> animations type (Fade, Zoom, Scroll, etc...)
-		*/
-		std::vector<std::vector<Animation*>> animation;
-		std::vector<Animation*> tempAnimation;
-
-		std::vector<sf::Texture> menuImages;
-		std::vector<std::string> menuItems;
-
-		sf::Vector2f position;
-		int axis;
-		std::string align;
-		std::vector<std::string> animationTypes;
-
-		int unsigned itemNumber;
-
-		/*! Functions */
-		void EqualizeMenuItems();
-		void SetAnimations();
-		void SetPositions();
+		int selectedItemIndex;
+		sf::Font font;
+		sf::Text menu[MAX_NUMBER_OF_ITEMS];
 };
