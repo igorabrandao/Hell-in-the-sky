@@ -31,19 +31,24 @@ class LevelScreen : public GameScreen
 	*/
 	private:
 		/*! Attributes */
+
+		/* Background */
 		sf::Texture background;
 		sf::Sprite image;
+
+		/* Time handle */
 		sf::Clock clock;
 
+		/* Sound */
 		sf::SoundBuffer buffer;
 		sf::Sound sound;
 
+		/* Player */
 		sf::Texture pTexture;
 		sf::Sprite playerImage;
 
+		/* General settings */
 		int level;
-		//list<int/*Enemies object*/> enemies;
-		//GameObject player; // Instance player class
 };
 
 #endif // LevelScreen_H
