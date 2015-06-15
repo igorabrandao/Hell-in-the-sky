@@ -92,22 +92,22 @@ void LevelScreen::Update( sf::RenderWindow &Window, sf::Event event )
 	if ( input.KeyDown(Window, sf::Keyboard::Up) )
 	{
 		source.y = Up;
-		playerImage.move(0, -10);
+		playerImage.move(0, -7);
 	}
 	else if ( input.KeyDown(Window, sf::Keyboard::Down) )
 	{
 		source.y = Down;
-		playerImage.move(0, 10);
+		playerImage.move(0, 7);
 	}
 	else if ( input.KeyDown(Window, sf::Keyboard::Right) )
 	{
 		source.y = Right;
-		playerImage.move(10, 0);
+		playerImage.move(7, 0);
 	}
 	else if ( input.KeyDown(Window, sf::Keyboard::Left) )
 	{
 		source.y = Left;
-		playerImage.move(-10, 0);
+		playerImage.move(-7, 0);
 	}
 
 	// Delay  between changes
