@@ -5,6 +5,7 @@
 #include "ScreenManager.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class LevelScreen : public GameScreen
 {
@@ -30,15 +31,19 @@ class LevelScreen : public GameScreen
 	*/
 	private:
 		/*! Attributes */
-		sf::Text text;
-		sf::Font font;
-		//sf::Texture background;
-		//sf::Sound sound;
+		sf::Texture background;
+		sf::Sprite image;
+		sf::Clock clock;
 
-		//int level;
+		sf::SoundBuffer buffer;
+		sf::Sound sound;
+
+		sf::Texture pTexture;
+		sf::Sprite playerImage;
+
+		int level;
 		//list<int/*Enemies object*/> enemies;
 		//GameObject player; // Instance player class
-
 };
 
 #endif // LevelScreen_H
