@@ -151,7 +151,7 @@ void LevelScreen::Update( sf::RenderWindow &Window, sf::Event event )
 * \enemie's generation
 ***********************************************/
 void LevelScreen::GenerateEnemies()
-{std::cout << "OOOOOOO" << std::endl;
+{
 	while( enemyit != enemy.end() )
 	{std::cout << "AAAAAAAA" << std::endl;
 	    next = enemyit;
