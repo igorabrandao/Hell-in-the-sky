@@ -4,6 +4,7 @@
 #include "GameScreen.h"
 #include "ScreenManager.h"
 #include <iostream>
+#include <list>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -21,6 +22,8 @@ class LevelScreen : public GameScreen
 		void UnloadContent(); // Unload the content on the screen
 		void Update( sf::RenderWindow &Window, sf::Event event ); // Update the screen content
 		void Draw( sf::RenderWindow &Window ); // Print the content on the screen
+
+		void GenerateEnemies();
 	/*! 
      * Protected section
 	*/

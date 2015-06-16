@@ -12,8 +12,11 @@ float moveSpeed = 10000.0f;
 sf::View view;
 sf::Vector2f position(screenWidth/2, screenHeight/2);
 
-sf::Texture background2;
-sf::Sprite image2;
+/* Enemies */
+std::list<sf::Sprite> enemy;
+std::list<sf::Sprite>::iterator enemyit = enemy.begin(), next;
+sf::Texture enemytex;
+int erasedEnemies = 0;
 
 /********************************************//**
 * \class constructor
@@ -50,7 +53,6 @@ void LevelScreen::LoadContent()
 	}
 	else
 	{
-		pTexture.setRepeated(true);
 		playerImage.setTexture(pTexture);
 		//playerImage.setPosition(100, 100);
 	}
@@ -76,11 +78,9 @@ void LevelScreen::LoadContent()
 	else
 	{
 		image.setTexture(background);
-
-		background2.loadFromFile("assets/images/level/level01.png");
-		image2.setTexture(background);
-		image2.setPosition(4530.0f, 0);
 	}
+
+	this->GenerateEnemies();
 }
 
 /********************************************//**
@@ -148,6 +148,42 @@ void LevelScreen::Update( sf::RenderWindow &Window, sf::Event event )
 }
 
 /********************************************//**
+* \enemie's generation
+***********************************************/
+void LevelScreen::GenerateEnemies()
+{std::cout << "OOOOOOO" << std::endl;
+	while( enemyit != enemy.end() )
+	{std::cout << "AAAAAAAA" << std::endl;
+	    next = enemyit;
+	    next++;
+	    if ( enemyit->getGlobalBounds().intersects(playerImage.getGlobalBounds()) )
+	    {
+	        enemy.erase(enemyit);
+	        ++erasedEnemies;
+	    }
+	    enemyit = next;
+	}
+
+	if ( !enemytex.loadFromFile("assets/sprites/enemy.png") )
+	{
+		std::cout << "Could not load PlayerManager image" << std::endl;
+	}
+	else
+	{
+		for( int i = 0; i < erasedEnemies; ++i )
+		{std::cout << "BBBBBBBB" << std::endl;
+		    sf::Sprite tempSprite(enemytex);    
+		    srand(time(NULL));
+		    float y = -200;
+		    float x = rand() % 20 + 30;
+		    tempSprite.setPosition(x, y);
+		    y = y - tempSprite.getGlobalBounds().height * 2;
+		    enemy.push_back(tempSprite);
+		}
+	}
+}
+
+/********************************************//**
 * \print the screen content
 ***********************************************/
 void LevelScreen::Draw( sf::RenderWindow &Window )
@@ -158,9 +194,13 @@ void LevelScreen::Draw( sf::RenderWindow &Window )
 
 	/*! Draw background */
 	Window.draw(image);
-	Window.draw(image2);
 
 	/*! Draw player sprite */
 	playerImage.setTextureRect(sf::IntRect( firstImageX, firstImageY, 120, 50));
 	Window.draw( playerImage );
+
+	for ( enemyit=enemy.begin(); enemyit!=enemy.end(); ++enemyit )
+	{std::cout << "CCCCCCCCC" << std::endl;
+        Window.draw(*enemyit);
+    }
 }
